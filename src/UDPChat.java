@@ -144,9 +144,11 @@ public class UDPChat {
                 }
             });
             input.setText("");
+            System.out.println("enviado: "+mensagem);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     public void receivedMessage(DatagramPacket datagram) {
@@ -190,7 +192,7 @@ public class UDPChat {
                     quit = true;
                 }
 
-                System.out.println(message);
+                System.out.println("recebido: "+message);
             } while (!quit);
             socket.close();
             System.out.println("Socket fechado");
