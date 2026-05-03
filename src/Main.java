@@ -1,4 +1,6 @@
-void main() {
-    UDPChat chat = new UDPChat();
-    chat.start();
+public class Main {
+    public static void main(String[] args) {
+        UDPChat chat = new UDPChat();
+        chat.start();
+    }
 }
