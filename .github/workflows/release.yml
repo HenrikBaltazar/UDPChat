@@ -25,7 +25,7 @@ jobs:
         run: |
           javac src/*.java -d bin/
           cd bin
-          jar cfe ../UDPChat.jar chat.Main *.class
+          jar cfe ../UDPChat.jar Main *.class
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

@@ -7,7 +7,7 @@ Simple UDP based chat, just send and receive text data packet.
 ```shell
 cd src
 javac *.java
-jar cfe UDPChat.jar chat.Main *.class
+jar cfe UDPChat.jar Main *.class
 ```
 *openjdk-26*
 
