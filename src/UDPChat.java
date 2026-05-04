@@ -22,11 +22,11 @@ public class UDPChat {
     public String quitMessage = "$quit";
     HTMLDocument doc;
     HTMLEditorKit kit;
+    JFrame mainWindow = new JFrame("Chat");
 
 
     public void createAndShowGUI(DatagramSocket socket){
         Font textFont = new Font("Monospaced", Font.BOLD, 24);
-        JFrame mainWindow = new JFrame("Chat");
         mainWindow.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         mainWindow.setSize(new Dimension(800,800));
         mainWindow.setAlwaysOnTop(true);
@@ -111,14 +111,16 @@ public class UDPChat {
     }
 
     public void closeSocket() {
-        System.out.println("Fechando socket");
+        System.out.println("Fechando socket!");
+        quit=true;
         try {
             if (socket != null && !socket.isClosed()) {
                 DatagramPacket quitPacket = new DatagramPacket(quitMessage.getBytes(),0,
                         quitMessage.getBytes().length,client,port);
                 socket.send(quitPacket);
-                socket.close();
+                System.out.println("enviado: "+quitMessage);
             }
+            socket.close();
             System.out.println("Socket fechado");
         } catch (Exception e) {
             e.printStackTrace();
@@ -195,6 +197,7 @@ public class UDPChat {
                 System.out.println("recebido: "+message);
             } while (!quit);
             socket.close();
+            mainWindow.dispose();
             System.out.println("Socket fechado");
         } catch (Exception e) {
             e.printStackTrace();
